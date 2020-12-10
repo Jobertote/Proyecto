@@ -1,0 +1,263 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClipEz</title>
+    <link rel="stylesheet" href="principal.css">
+    <link rel="icon" type="image/png" href="rec.png" />
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+    <!--Barra de navegacion-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#">ClipEz</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item logged-out" style="display: none;">
+						<a class="nav-link" href="#" data-toggle="modal" data-target="#signinModal">Iniciar Sesion</a>
+					</li>
+					<li class="nav-item logged-out" style="display: none;">
+						<a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Registrarse</a>
+					</li>
+					<li class="nav-item logged-in" style="display: none;">
+						<a class="nav-link" href="#" id="Logout">Cerrar Sesion</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </nav>
+    
+
+    <!-- Modal -->
+	<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="signup-form">
+						<div class="form-group">
+							<input type="text" id="signup-name" class="form-control" placeholder="Nombre" required>
+						</div>
+						<div class="form-group">
+							<input type="text" id="signup-email" class="form-control" placeholder="email" required>
+						</div>
+						<div class="form-group">
+							<input type="password" id="signup-password" class="form-control" placeholder="Contraseña"
+								required>
+						</div>
+						<div class="form-group">
+							<select name="plataforma" id="plataforma" class="form-control">
+								<option value="XBOX">XBOX</option>
+								<option value="PlayStation">PlayStation</option>
+								<option value="Nintendo">Nintendo</option>
+								<option value="PC">PC</option>
+							</select>
+						</div>
+						<center>
+							<button type="submit" class="btn btn-primary">Registrarse</button>
+						</center>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal sign in-->
+	<div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="login-form">
+						<div class="form-group">
+							<input type="text" id="login-email" class="form-control" placeholder="email" required>
+						</div>
+						<div class="form-group">
+							<input type="password" id="login-password" class="form-control" placeholder="password"
+								required>
+						</div>
+						<center>
+							<button type="submit" class="btn btn-primary">Ingresar</button>
+						</center>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+    
+
+
+    <div class="contenido">
+        <div class="lateral-izquierdo">
+            <div class="perfil-resumen">
+                <img src="perfil.jpg" alt="" class="foto">
+                <b><p class="nombre-usuario" id="nombre-usuario"></p></b>
+                <ul id="menu">
+                    <li><img src="https://cdn3.iconfinder.com/data/icons/flat-icons-web/40/XBox-512.png" alt="" class="img-logo"></li>
+                    <li><img src="https://cdn3.iconfinder.com/data/icons/flat-icons-web/40/PlayStation-128.png" alt="" class="img-logo"></li>
+                    <li><img src="https://de.cdn-website.com/1277796d9d5249179acdd3b14d493775/dms3rep/multi/mobile/logo+switch.png" alt="" class="img-logo"></li>
+                    <li><img src="https://cdn3.iconfinder.com/data/icons/flat-icons-web/40/XBox-512.png" alt="" class="img-logo"></li>
+                </ul>  
+            </div>
+        </div>
+        <div class="contenido-central">
+            <div class="insertar-datos">
+                <!--<img src="https://i.pinimg.com/736x/49/39/b1/4939b174ee2a4039228cfe88cfd188ba.jpg" alt="" class="foto-user">-->
+                
+                <!--Subir video-->
+                <div class="container video" id="video">
+                        <input type="text" class="descripcion-pub" placeholder="Añadir descripción..." id="descripcion-pub">
+                        <div id="subirContenido">
+                            <input type="file" id="img-uploader">
+                            <p id="texto">SUBIR</p>
+                        </div>
+                        <br>
+                        <input type="button" class="publicar-contenido" onclick="uploadProfileImg()" value=" Publicar">
+                </div>
+            </div>
+            <div class="CssCaja" id="CssCaja">
+                <!-- <div class="datos-pub">
+                    <img src="https://i.pinimg.com/736x/49/39/b1/4939b174ee2a4039228cfe88cfd188ba.jpg" alt="" class="foto-pub">
+                    <p class="nombre-usuario-pub" id="perfilName"></p>
+                </div>
+                <div class="conten-video">
+                    <div class="col-md-6" id="contenido-container"></div>
+                </div> -->
+            </div>
+
+
+                <!--Contenido principal-->
+
+	<div class="container p-4">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<ul class="list-group posts">
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+                <div class="container p-4">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <ul class="list-group posts">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+
+            
+
+
+
+            <!--
+            <div class="desplegar-publicaciones">
+                <div class="datos-pub">
+                    <img src="https://i.pinimg.com/736x/49/39/b1/4939b174ee2a4039228cfe88cfd188ba.jpg" alt="" class="foto-pub">
+                    <p class="nombre-usuario-pub"> DanyGamer21</p>
+                </div>
+                <div class="conten-video">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/5Mbq-5FAx_s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            -->
+        </div>
+        <div class="lateral-derecho">
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Scripts-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        crossorigin="anonymous"></script>
+        
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    
+    <!-- Firebase Scripts-->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+    
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyC3iURk1NBC-iQfyWZcr4nFlrHkUK7I1XY",
+            authDomain: "clipez.firebaseapp.com",
+            databaseURL: "https://clipez.firebaseio.com",
+            projectId: "clipez",
+            storageBucket: "clipez.appspot.com",
+            messagingSenderId: "6466651037",
+            appId: "1:6466651037:web:ba85d729d5c3ef8e1ce574",
+            measurementId: "G-KVL8ETGTR1"
+        };
+
+
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        firebase.analytics();
+        const fs = firebase.firestore();
+
+        var storage = firebase.storage();
+
+        console.log(firebase);
+    </script>
+    
+    <!--Codigo js-->
+    <script src="main.js"></script>
+
+
+
+</body>
+</html>
